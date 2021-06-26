@@ -1,0 +1,22 @@
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    padding-top: 70px;
+    padding-left: 300px;
+    
+}
+
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.card__content{
+    padding-left: 2rem;
+    padding-bottom: 2rem;  
+}
+
+
+
+
+

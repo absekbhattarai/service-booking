@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle%></title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="/form.css">
+    <link rel="stylesheet" href="/navigation.css">
+</head>
+<body>
+    <%- include('./includes/navigation.ejs') %>
+    <div class="testbox">
+        <form action="/<% if (editing) { %>edit-booking<% } else { %>booking<% } %>" method="POST">
+            <div class="banner">
+                <h1>Booking Form</h1>
+              </div>
+            
+            <div class="items">
+                <p>Bike Model</p>
+                <div>
+                    <select name="model" id="model"  required value="RC 200">
+                        <!-- value="<% if (editing) { %><%= booking.model %><% } %>" -->
+                        <option value="">Model</option>
+                        <option value="Duke 200">Duke 200</option>
+                        <option value="RC 200">RC 200</option>
+                        <option value="Duke 250">Duke 250</option>
+                        <option value="Duke 390">Duke 390</option>
+                        <option value="RC 390">RC 390</option>
+                    </select>
+                </div>
+            </div>
+            <div class="items">
+                <p>Service Type</p>
+                <div>
+                    <select name="serviceType" id="serviceType"  required value="Quick Repair">
+                        <!-- value="<% if (editing) { %><%= booking.serviceType %><% } %>" -->
+                        <option value="">Type</option>
+                        <option value="Quick Repair">Quick Repair</option>
+                        <option value="Full Servicing">Full Servicing</option> 
+                    </select>
+                </div>
+            </div>
+            <div class="items">
+                <p>Specify your problems</p>
+                <textarea row="5" name="problems" id="problems" required ><% if (editing) { %><%= booking.problems %><% } %></textarea>
+            </div>
+            <div class="items">
+                <p>Date</p>
+                <input type="date" name="date" id="date" required>
+                <!-- value="<% if (editing) { %><%= booking.date %><% } %>" -->
+                <i class="fas fa-calender-alt"></i>
+            </div>
+            <% if (editing) { %>
+                <input type="hidden" value="<%=booking._id %>" name="bookingId">
+            <% } %>
+            <form type="button" method="POST">
+            <div class="btn">
+                <button class="btn" type="submit" ><% if (editing) { %>Update Booking<% } else { %>Book Service<% } %></button>            
+          </div>
+          </form>
+        </form>
+        </div>         
+</body>
+</html>

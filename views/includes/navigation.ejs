@@ -1,0 +1,33 @@
+<div class="sidebar">
+  <a class="active" href="/">Home</a>
+  <% if(isCustomer) { %>
+  <a href="/booking">Book a Service</a>
+  <a href="/my-status">My status</a>
+
+  <% } else { %>
+  <a href="/admin/booking-list">All Bookings</a>
+  <a class="approved" href="/admin/approved">Approved</a>
+  <a class="approved" href="/admin/pending">Pending</a>
+  <a class="rejected" href="/admin/rejected">Rejected</a>
+  <%}%>
+  <div class="logoutButton">
+    <form action="/logout" method="POST">
+      <% if(!isCustomer) { %>
+      <button
+        class="logout-button"
+        style="margin-top: 400px; margin-left: 10px"
+      >
+        Logout
+      </button>
+      <% }else { %>
+      <button
+        class="logout-button"
+        style="margin-top: 510px; margin-left: 10px"
+      >
+        Logout
+      </button>
+      <% } %>
+      <input type="hidden" name="logout" />
+    </form>
+  </div>
+</div>

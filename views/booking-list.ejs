@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle%></title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="/list.css">
+    <link rel="stylesheet" href="/navigation.css">
+
+</head>
+<body>
+    <%- include('./includes/navigation.ejs') %>
+    <br><br><br>
+    <main style="display: flex;flex-wrap: wrap;">
+        <% if (book.length > 0) { %>
+            <div class="grid" style="position: relative;">
+                <% for (let booking of book) { %>
+                    <article class="card book-item">
+                        <header class="card__header">
+                            <p class="booking_model"  >
+                                <% if(booking.status=='Approved') { %>
+                                    <h1 style="text-align: center;"><%= booking.model %> <small style="background-color: rgb(20, 107, 46);"><%= booking.status %></small></h1>
+                                    <% } %>
+                                <% if(booking.status=='Rejected') { %>
+                                <h1 style="text-align: center;"><%= booking.model %> <small style="background-color: red;"><%= booking.status %></small></h1>
+                                <% } %>
+                                <% if(booking.status=='Pending') { %>
+                                    <h1 style="text-align: center;"><%= booking.model %> <small style="background-color: rgb(179, 168, 19);color: black;"><%= booking.status %></small></h1>
+                                    <% } %>
+                            </p>
+                        </header>
+                        <hr>
+                        <div class="card__content" >
+                            <p class="booking_name">
+                                <p><b>Name</b> <%= booking.userId.name %></p>
+                            </p>
+                            <p class="booking_phone">
+                                <p><b>Phone Number</b> <%= booking.userId.phone %></p>
+                            </p>
+                            <p class="service_type">
+                                <p><b>Service Type</b> <%= booking.serviceType%> </p>
+                            </p>  
+                            <p class="problems">
+                                <p><b>Problems</b> <br><%= booking.problems%></p>
+                            </p>
+                            <p class="date">
+                                <p><b><%if(booking.status=='Pending' ) { %>Requested Date<%} else if(booking.status=='Approved') { %>Approved Date<%} else { %>Date Rejected<% } %></b> <%= booking.date%></p>
+                            </p>
+                            <%if(booking.status=='Approved' ) { %>
+                            <p class="time">
+                                <p><b>Service Time </b> <%= booking.time%></p>
+                            </p>
+                            <% } %>
+                            
+                            
+                        </div>
+                        
+
+                                <div style="display: flex;margin-top: 2rem;">
+                                    <div style="margin-right: 8px; margin-bottom: -10px">
+                                        
+                                        <a href="/admin/booking-list/<%= booking._id %>" class="details-button" style="margin-bottom: 0;border-radius: 8px;">Details</a>
+                                       
+                                    </div>
+                            <% if(booking.status == 'Pending') { %>
+                                    <div>
+                                        <a href="/admin/booking-list/action/<%= booking._id%>"  style="margin-right: 8px;">   
+                                        <b class="action-button">Take Action</b>
+                                        </a>
+                                    </div>
+                            <% } %> 
+                                </div>
+                        
+                        </div>
+                    </article>
+                <% } %>
+            </div>
+            <% } else { %>
+            <div class="no_booking">
+                <h1 style="text-align: center; padding-top: 8rem;">No Bookings Available</h1>
+            </div>
+        <% } %>
+    </main>
+</body>
+</html>

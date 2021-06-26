@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle%></title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="/list.css">
+    <link rel="stylesheet" href="/navigation.css">
+    <link rel="stylesheet" href="/details.css">
+    <link rel="stylesheet" href="/action.css">
+</head>
+<body>
+    <%- include('./includes/navigation.ejs') %>
+    <br><br><br><br>
+    <main>
+        <div class="wrap-all">
+            <div class="grid" style="padding-left: 3rem;">
+                    <article class="card book-item" >
+                        <header class="card__header">
+                            <h1 class="booking_model"> 
+                                 <h1 style="text-align: center; color:rgb(250, 100, 12);font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 28px;"><%= booking.model %></h1> 
+                            </h1>
+                        </header>
+                        <div class="card__content" style="font-size: 13px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-style: normal;"> 
+                            
+                                 <h1><b style="color: rgb(143, 155, 146);">Name</b> <%= booking.userId.name %></h1>
+                            
+                            
+                                <h1><b style="color: rgb(119, 148, 125);">E-mail</b> <%= booking.userId.email %></h1>
+                            
+                            
+                                <h1><b style="color:rgb(119, 148, 125);">Phone Number</b> <%= booking.userId.phone %></h1>
+                            
+                            
+                                <h1><b style="color: rgb(119, 148, 125);">Address</b> <%= booking.userId.address %></h1>
+                           
+                           
+                                <h1><b style="color: rgb(119, 148, 125);">Service Type</b> <%= booking.serviceType%> </h1>
+                              
+                            
+                                <h1><b style="color: rgb(119, 148, 125);">Problems</b> <%= booking.problems%></h1>
+
+                                <h1><b style="color: rgb(119, 148, 125);">Requested Date</b> <%= booking.date%></h1>
+                               
+                        </div> 
+                        
+                        
+                    </article>
+                    
+                    
+                    <%if(booking.status == 'Pending') {%>
+                        <div class="two-button">
+                                <form action="/admin/booking-list/action/approve" method="POST">
+                                    <input type="hidden" name="approveId" value="<%= booking._id %>">
+                                    <button class="approve-action-btn" type="submit">Approve</button>
+                                </form>
+                            
+                                <form action="/admin/booking-list/action/reject" method="POST">
+                                    <input type="hidden" name="rejectId" value="<%= booking._id %>">
+                                    <button class="reject-action-btn" type="submit">Reject</button>    
+                                </form> 
+                        <div>
+                        <% } %>
+                        <% if(booking.status=='Rejected') { %>
+                            <div class="message-box">
+                                <form action="/admin/booking-list/action/reject" method="POST">
+                                    <p>Message for customer </p><textarea rows="5" name="message" id="message" required></textarea>
+                                    <input type="hidden" name="rejectId" value="<%= booking._id %>">
+                                    <button type="submit" name="sendBtn">Send</button>
+                                </form>
+                        </div>
+                        <% } %>
+                        <%if (booking.status=='Approved') {  %>
+                            <div class="message-box">
+                                <form action="/admin/booking-list/action/approve" method="POST">
+                                    <p>Message for customer </p><textarea rows="5" name="message" id="message" style="border-color: black" required></textarea>
+                                    <p>Select Time </p><input type="time" name="time">
+                                    <input type="hidden" name="approveId" value="<%= booking._id %>">
+                                    <button type="submit" name="sendBtn">Send</button>
+                                </form>
+                            </div>
+                        <%}%>        
+            </div>
+        </div>    
+    </main>
+    
+</body>
+</html>

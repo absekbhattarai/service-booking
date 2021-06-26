@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle%></title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="/list.css">
+    <link rel="stylesheet" href="/navigation.css">
+
+</head>
+<body>
+    <%- include('./includes/navigation.ejs') %>
+    <br><br><br>
+    <main>
+        <% if (reject.length > 0) { %>
+            <div class="grid" >
+                <% for (let rejected of reject) { %>
+                    <article class="card book-item">
+                        <header class="card__header">
+                            <p class="booking_model"  >
+                                <h1 style="text-align: center;color: rgb(255, 110, 13);"><%= rejected.model %></h1>
+                            </p>
+                        </header>
+                        <hr>
+                        <div class="card__content">
+                            <p class="booking_name">
+                                <p><b>Name</b> <%= rejected.userId.name %></p>
+                            </p>
+                            <p class="booking_phone">
+                                <p><b>Phone Number</b> <%= rejected.userId.phone %></p>
+                            </p>
+                            <p class="email-item">
+                                <p><b>Email</b> <%= rejected.userId.email %></p>
+                            </p>
+                            <p class="service_type">
+                                <p><b>Service Type</b> <%= rejected.serviceType%> </p>
+                            </p>
+                            <p class="date">
+                                <p><b>Requested Date</b> <%= rejected.date%> </p>
+                            </p>
+                            <br>
+                            <form action="/admin/rejected/delete" method="post"  style="margin-right: 8px;">
+                                    
+                                <button type="submit" class="delete-button">Delete</button>
+                                <input type="hidden" name="delete" value="<%= rejected._id %>"> 
+                                </form>
+                        </div>
+                    </article>
+                <% } %>
+            </div>
+            <% } else { %>
+            <div class="no_booking">
+                <h1 style="text-align: center; padding-top: 8rem;">No Rejected service available</h1>
+            </div>
+        <% } %>
+    </main>
+</body>
+</html>

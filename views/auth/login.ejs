@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle%></title>
+    <link rel="stylesheet" href="/login.css">
+</head>
+    <body>
+        <%if(errorMessage) { %>
+            <div class="user-message user-message--error"><%= errorMessage%></div>
+            <% } %>
+            <%=errorMessage%>
+        <form action="/login" method="POST">
+        <div class="login">
+            <div class="login-screen">
+                <div class="app-title">
+                    <h1>Login</h1>
+                </div>
+
+    
+                <div class="login-form">
+                    <div class="control-group">
+                    <input name="username" type="text" class="login-field" value="" placeholder="username" id="login-name">
+                    <label class="login-field-icon fui-user" for="login-name"></label>
+                    </div>
+    
+                    <div class="control-group">
+                    <input name="password" type="password" class="login-field" value="" placeholder="password" id="login-pass">
+                    <label class="login-field-icon fui-lock" for="login-pass"></label>
+                    </div>
+                    <br><br>
+                    <button type="submit" class="btn btn-primary btn-large btn-block">Login</button>
+                    
+                </div>
+                <div class="back-container">
+                    <a href="/register" style="color: black; text-decoration: none;">Register</a>
+                </div>
+               
+            </div>
+        </div>
+        </form>
+    </body>
+</html>

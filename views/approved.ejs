@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle%></title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="/list.css">
+    <link rel="stylesheet" href="/navigation.css">
+
+</head>
+<body>
+    <%- include('./includes/navigation.ejs') %>
+    <br><br><br>
+    <main>
+        <% if (book.length > 0) { %>
+            <div class="grid" >
+                    <% for (let booking of book) { %>
+                        <article class="card book-item">
+                            <header class="card__header">
+                            <p class="booking_model"  >
+                                <h1 style="text-align: center;color: rgb(255, 110, 13);"><%= booking.model %>  </h1>
+                            </p>
+                        </header>
+                        <hr>
+                        <div class="card__content">
+                            <p class="booking_name">
+                                <p><b>Name</b> <%= booking.userId.name %></p>
+                            </p>
+                            <p class="booking_phone">
+                                <p><b>Phone Number</b> <%= booking.userId.phone %></p>
+                            </p>
+                            <p class="booking_address">
+                                <p><b>Address</b> <%= booking.userId.address%></p>
+                            </p>
+                            <p class="service_type">
+                                <p><b>Service Type</b> <%= booking.serviceType%> </p>
+                            </p>  
+                            <p class="problems">
+                                <p><b>Problems</b> <br><%= booking.problems%></p>
+                            </p>
+                            <p class="date">
+                                <p><b>Approved Date</b> <br><%= booking.date%></p>
+                            </p>
+                            <p class="time">
+                                <p><b>Approved Time</b> <br><%= booking.time%></p>
+                            </p>
+                            
+
+                            <br> 
+                            <form action="/admin/approved/done" method="post"  style="margin-right: 8px; text-align: center;">
+                                    
+                                <button type="submit" class="approve-button">Done</button>
+                                <input type="hidden" name="doneId" value="<%= booking._id %>"> 
+                            </form>                              
+                                 
+                        </div>
+                        </article>
+                    <% } %>
+                
+            </div>
+        <% } else { %>
+            <div class="no_booking">
+
+
+
+
+<h1 style="text-align: center; padding-top: 8rem;">No Approved Bookings</h1>
+            
+
+
+</div>
+        <% } %>
+    </main>
+</body>
+</html>

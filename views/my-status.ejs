@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle%></title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="/list.css">
+    <link rel="stylesheet" href="/navigation.css">
+
+</head>
+
+<body>
+    <%- include('./includes/navigation.ejs') %>
+    <br><br><br>
+    <main>
+        <% if (book.length > 0) { %>
+        <div class="grid">
+            <% for (let booking of book) { %>
+            <% if(booking.status=='Pending') { %>
+            <article class="card book-item" style="background-color: rgb(255, 255, 153);height: fit-content;">
+                <%} else if(booking.status=='Approved') { %>
+                <article class="card book-item" style="background-color: rgb(148, 226, 133);">
+                    <%} else { %>
+                    <article class="card book-item" style="background-color: rgb(223, 125, 108);height: fit-content;">
+                        <%}%>
+                            <header class="card__header">
+                            <p class="booking_model"  >
+                                <h1 style="text-align: center;"><%= booking.model %> </h1>
+                            </p>
+                            </header>
+                        <hr>
+                       
+                        <div class="card__content">
+                            <p class="status">
+                            <p><%if(booking.status == "Approved"){ %>
+                            <h2 style="color: rgb(37, 165, 37);"> <%= booking.status%></h2>
+                            <%}else if(booking.status == "Rejected") { %><h2 style="color: rgb(204, 0, 0);">
+                                <%= booking.status%></h2><%} else { %><h2 style="color: rgb(157, 65, 218)">
+                                <%= booking.status%></h2><%}%></p>
+                            </p>
+
+                            <p class="service_type">
+                                <p><b>Service Type</b> <%= booking.serviceType%> </p>
+                            </p>
+                            <p class="problems">
+                            <p><b>Problems</b> <br><%= booking.problems%></p>
+                            </p>
+                            <p class="date">
+                            <p><b>Date</b> <br><%= booking.date%></p>
+                            </p>
+                            <% if(booking.status=='Approved') {%>
+                            <p class="time">
+                            <p><b>Service Time </b> <br><%= booking.time%></p>
+                            </p>
+                            <p class="message">
+                            <p><b>Message From Workshop </b> <br><%= booking.message%></p>
+                            </p>
+                            <%}%>
+                            <br> 
+                        
+                            <div class="edit-delete-btn" style="display: flex "> 
+                                <%if(booking.status=='Pending') { %>
+                                         
+                                <a href="/edit-booking/<%= booking._id %>?edit=true" class="edit-btn">Edit</a>
+                                <form action="/my-status/deletemystatus" method="POST">
+                                    <input type="hidden" name="myStatusId" value="<%= booking._id %>">
+                                <button type="submit" class="delete-button" style="margin-left: 50px;">Delete</button>
+                                </form>
+                            <%}%>
+                            <%if(booking.status != 'Pending') { %>
+                            
+                                <form action="/my-status/deletemystatus" method="POST">
+                                    <input type="hidden" name="myStatusId" value="<%= booking._id %>">
+                                <button type="submit" class="delete-button" style="margin-left: 90px;">Delete</button>
+                                </form>
+                            <%}%>
+
+                                
+                           
+                        </div>
+
+
+
+        </div>
+        </article>
+        <% } %>
+
+        </div>
+        <% } else { %>
+        <div class="no_booking">
+            <h1 style="text-align: center; padding-top: 8rem;">No Bookings </h1>
+        </div>
+        <% } %>
+    </main>
+</body>
+
+</html>

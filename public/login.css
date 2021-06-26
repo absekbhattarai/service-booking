@@ -1,0 +1,89 @@
+* {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+body {
+  font-family: Arial;
+  background-size: cover;
+  background-image: url("/images/background-index.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.login {
+  margin-top: 170px;
+  margin-left: 1000px;
+  width: 300px;
+}
+.login-screen {
+  background-color: rgb(83, 79, 79);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.app-title {
+  text-align: center;
+  padding-bottom: 20px;
+  color: rgb(194, 60, 60);
+}
+
+.login-form {
+  text-align: center;
+}
+.control-group {
+  margin-bottom: 10px;
+}
+
+input {
+  text-align: center;
+  background-color: #dddad1;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 10px 0;
+  width: 250px;
+  transition: border 0.5s;
+}
+
+input:focus {
+  border: 2px solid #c45a30;
+  box-shadow: none;
+}
+
+.btn {
+  border: 2px solid transparent;
+  background: #ff754b;
+  color: #000000;
+  font-size: 16px;
+  line-height: 25px;
+  padding: 10px 0;
+  text-decoration: none;
+  text-shadow: none;
+  border-radius: 3px;
+  box-shadow: none;
+  display: block;
+  width: 250px;
+  margin: 0 auto;
+}
+
+.btn:hover {
+  background-color: #c7430f;
+}
+
+.user-message {
+  text-align: center;
+  margin-top: -10px;
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  background-color: red;
+  border: red;
+}
+
+.back-container{
+  text-align: center;
+  padding-top: 10px;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle%></title>
+    <link rel="stylesheet" href="/login.css">
+</head>
+    <body>
+        <%if(errorMessage) { %>
+            <div class="user-message user-message--error"><%= errorMessage%></div>
+            <% } %>
+        <form action="/register" method="POST">
+        <div class="login" style="margin-top: 100px;margin-left: 915px;width: 400px;">
+            <div class="login-screen">
+                <div class="app-title">
+                    <h1 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Register</h1>
+                </div>
+
+    
+                <div class="login-form">
+                    <div class="control-group">
+                    <input type="text" class="login-field" name="registerName" value="" placeholder="name" id="register-name">
+                    
+                    </div>
+                    <div class="control-group">
+                        <input type="text" class="login-field" name="registerEmail" value="" placeholder="E-mail" id="register-email">
+                        
+                    </div>
+                    <div class="control-group">
+                        <input type="tel" name="registerPhone" id="registerPhone"  pattern="[0-9]{10}" placeholder="Phone" id="register-phone">
+                        
+                    </div>
+                    <div class="control-group">
+                        <input type="text" class="login-field" name="registerAddress" value="" placeholder="Address" id="register-address">
+                        
+                    </div>
+                    <br>
+                    <div class="control-group">
+                        <input type="text" class="login-field" name="username" value="" placeholder="Username" id="username">
+                        
+                    </div>
+    
+                    <div class="control-group">
+                    <input type="password" class="login-field" name="registerPass" value="" placeholder="password" id="register-pass">
+                    
+                    </div>
+                    
+                    <br><br>
+                    <button type="submit" class="btn btn-primary btn-large btn-block">Register</button>
+                    
+                </div>
+                <div class="back-container">
+                    <a href="/login" style="color: black; text-decoration: none;">Login</a>
+                </div>
+            </div>
+        </div>
+        </form>
+        
+    </body>
+</html>

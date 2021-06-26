@@ -1,0 +1,40 @@
+body {
+  background-size: cover;
+  background-image: url("/images/background-index.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.login-button {
+  position: absolute;
+  text-decoration: none;
+  margin-left: 1024px;
+  margin-top: 300px;
+  padding: 10px 27px 11px !important;
+  font-size: 21px !important;
+  background-color: #e95a2f;
+  font-weight: bold;
+  text-shadow: 1px 1px #f36c8c;
+  color: #ffffff;
+  border-radius: 100px;
+  border: 1px solid #f36c8c;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+}
+
+.register-button {
+  position: absolute;
+  text-decoration: none;
+  margin-left: 1024px;
+  margin-top: 400px;
+  padding: 10px 20px 11px !important;
+  font-size: 21px !important;
+  background-color: #e95a2f;
+  font-weight: bold;
+  text-shadow: 1px 1px #f36c8c;
+  color: #ffffff;
+  border-radius: 100px;
+  border: 1px solid #f36c8c;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+}
+
+

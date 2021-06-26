@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle%></title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="/list.css">
+    <link rel="stylesheet" href="/navigation.css">
+
+</head>
+<body>
+    <%- include('./includes/navigation.ejs') %>
+    <br><br><br>
+    <main>
+        
+        <% if (pending.length > 0) { %>
+            <div class="grid" >
+                    <% for (let booking of pending) { %>
+                        <article class="card book-item">
+                            <header class="card__header">
+                            <p class="booking_model"  >
+                                <h1 style="text-align: center;color: rgb(255, 110, 13);"><%= booking.model %> <small style="background-color:  rgb(230, 230, 0); color: black;"><%= booking.status %></small> </h1>
+                            </p>
+                        </header>
+                        <hr>
+                        <div class="card__content">
+                            <p class="booking_name">
+                                <p><b>Name</b> <%= booking.userId.name %></p>
+                            </p>
+                            <p class="booking_phone">
+                                <p><b>Phone Number</b> <%= booking.userId.phone %></p>
+                            </p>
+                            <p class="booking_address">
+                                <p><b>Address</b> <%= booking.userId.address%></p>
+                            </p>
+                            <p class="service_type">
+                                <p><b>Service Type</b> <%= booking.serviceType%> </p>
+                            </p> 
+                            <p class="date">
+                                <p><b style="font-size: 18px;">Requested Date</b><br><%= booking.date%></p>
+                            </p> 
+                            <p class="problems">
+                                <p><b>Problems</b> <br><%= booking.problems%></p>
+                            </p>
+                            
+                            
+                            
+
+                            <br> 
+                            <div>
+                                <a href="/admin/booking-list/action/<%= booking._id%>"  style="margin-right: 8px;">   
+                                    <b class="action-button" style="margin-left:30% ;">Take Action</b>
+                                </a>
+                            </div>                            
+                                 
+                        </div>
+                        </article>
+                    <% } %>
+                
+            </div>
+        <% } else { %>
+            <div class="no_booking">
+                <h1 style="text-align: center; padding-top: 8rem;">No Pending Bookings</h1>
+            </div>
+        <% } %>
+    </main>
+</body>
+</html>

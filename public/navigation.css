@@ -1,0 +1,43 @@
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #ddd8d8;
+    position: fixed;
+    overflow: auto;
+    font-size: large;
+  }
+  
+  /* Sidebar links */
+  .sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+  /* Active/current link */
+  .sidebar a.active {
+    background-color: #e66429;
+    color: white;
+  }
+  
+  /* Links on mouse-over */
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+
+  .rejected{
+    text-decoration: red;
+  }
+
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: rgb(231, 78, 31);
+  }
+
+
+  .logoutButton{
+    padding-bottom: 80px;
+  }
